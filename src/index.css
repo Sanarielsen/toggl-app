@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root, .App  {
+
+   height: 100vh;
+   /*height: 800px;*/
+}
+
+.panel {
+
+  height: 90vh;
+}
+
+
