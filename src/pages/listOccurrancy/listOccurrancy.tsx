@@ -30,7 +30,7 @@ function ListOccurrancy() {
     }, [])
   
     return (
-      <div className="listOccurrancy bg-cyan-200">
+      <div className="listOccurrancy bg-cyan-100">
         <div className="grid place-content-center h-screen w-screen">
           <div className="container shadow-md p-10">
 
@@ -45,7 +45,7 @@ function ListOccurrancy() {
                 })}
               </>
             </div>
-
+            
             <button className="p-2 w-full rounded text-zinc-50 bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300">
                 Continue
             </button>

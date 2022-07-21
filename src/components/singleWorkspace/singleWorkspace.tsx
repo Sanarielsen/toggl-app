@@ -1,6 +1,7 @@
 import './index.css';
+import { IWorkspace } from "../../pages/workspaces/workspaces"
 
-function SingleWorkspace() {
+function SingleWorkspace( {name} : IWorkspace )  {
   
     return (
       <>
@@ -9,7 +10,7 @@ function SingleWorkspace() {
             <form> 
                 <label 
                   className="text-stone-900 hover:text-zinc-500 focus:outline-none focus:ring"
-                  > Workspace Name Here
+                  > Workspace: {name}
                 </label>
             </form>
         </div>

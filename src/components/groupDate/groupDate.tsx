@@ -12,11 +12,11 @@ function GroupDate( {label, begin, end}: IDate ) {
 
           <div className="currentDate p-10"> 
 
-            <fieldset>
+            <fieldset className='border-2 border-sky-600 hover:border-sky-900 p-5'>
 
-              <legend> Data: {label} </legend>
+              <legend className="mb-5 font-bold"> Data: {label} </legend>
 
-              <div className="grid grid-cols-2 gap-2"> 
+              <div className="grid gap-2 lg:grid-cols-2 sm:grid-cols-1"> 
 
                 <div className="slot-1">
 
@@ -26,7 +26,8 @@ function GroupDate( {label, begin, end}: IDate ) {
                       size={50} 
                       name="txtDateInitial" 
                       id="txtDateInitial" 
-                      value={beginDate} />
+                      value={beginDate}
+                    />
                   </label>
                 </div>
 
