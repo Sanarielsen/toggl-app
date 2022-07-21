@@ -14,26 +14,14 @@ function ListOccurrancy() {
   const [timeEntries, setTimeEntries] = useState<IDate[]>([])
 
     const body = {
-      "beginning": "9",
-      "end": "17",
-      "dates": [
-          "2022-07-01T03:00:00.000Z",
-          "2022-07-04T03:00:00.000Z",
-          "2022-07-05T03:00:00.000Z",
-          "2022-07-06T03:00:00.000Z",
-          "2022-07-07T03:00:00.000Z",
-          "2022-07-08T03:00:00.000Z",
-          "2022-07-11T03:00:00.000Z",
-          "2022-07-12T03:00:00.000Z",
-          "2022-07-13T03:00:00.000Z",
-          "2022-07-14T03:00:00.000Z",
-          "2022-07-15T03:00:00.000Z",
-          "2022-07-18T03:00:00.000Z"
-      ]
-    }
+      "beginDate": "01/07/2022",
+      "endDate": "12/07/2022",
+      "beginHour": "9",
+      "endHour": "17"
+  }
 
     const getTimeEntries = async () => {
-      const { data } = await api.get('/toggl/time-entries', { data: body })
+      const { data } = await api.post('/toggl/days', body )
       setTimeEntries(data)
     }
 
@@ -45,13 +33,18 @@ function ListOccurrancy() {
       <div className="listOccurrancy bg-cyan-200">
         <div className="grid place-content-center h-screen w-screen">
           <div className="container shadow-md p-10">
-            <>
-              {timeEntries.forEach(timeEntry => {
-                return(
-                  <div> <GroupDate label={timeEntry.label} begin={timeEntry.begin} end={timeEntry.end}/> </div>
-                )
-              })}
-            </>
+
+            <label className="font-bold"> List of occurrancys: </label>
+
+            <div className="occurrancyContext my-5 overflow-y-scroll">
+              <>
+                {timeEntries.map(timeEntry => {
+                  return (
+                    <div> <GroupDate label={timeEntry.label} begin={timeEntry.begin} end={timeEntry.end}/> </div>
+                  )
+                })}
+              </>
+            </div>
 
             <button className="p-2 w-full rounded text-zinc-50 bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300">
                 Continue

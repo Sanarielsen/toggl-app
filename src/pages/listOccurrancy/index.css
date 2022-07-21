@@ -1,4 +1,9 @@
-html, body, #root, .listOccurrancy  {
+html, body, #root, .Projects  {
 
     height: 100vh;
+ }
+
+ .occurrancyContext {
+
+    height: 800px;
  }

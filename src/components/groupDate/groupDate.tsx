@@ -1,9 +1,11 @@
 import './index.css'; 
 import { IDate } from "../../pages/listOccurrancy/listOccurrancy"
 
-
 function GroupDate( {label, begin, end}: IDate ) {
-  
+
+  const beginDate = new Date(begin).toLocaleString();
+  const endDate = new Date(end).toLocaleString();
+
     return (
       <>
         <div className="groupDate">
@@ -12,7 +14,7 @@ function GroupDate( {label, begin, end}: IDate ) {
 
             <fieldset>
 
-              <legend> {label} </legend>
+              <legend> Data: {label} </legend>
 
               <div className="grid grid-cols-2 gap-2"> 
 
@@ -24,7 +26,7 @@ function GroupDate( {label, begin, end}: IDate ) {
                       size={50} 
                       name="txtDateInitial" 
                       id="txtDateInitial" 
-                      value={begin} />
+                      value={beginDate} />
                   </label>
                 </div>
 
@@ -36,7 +38,7 @@ function GroupDate( {label, begin, end}: IDate ) {
                       size={50} 
                       name="txtDateFinal" 
                       id="txtDateFinal" 
-                      value={end} 
+                      value={endDate}
                     />
                   </label>
                 </div>
