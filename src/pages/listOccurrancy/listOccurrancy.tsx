@@ -18,7 +18,7 @@ function ListOccurrancy() {
       "endDate": "12/07/2022",
       "beginHour": "9",
       "endHour": "17"
-  }
+    }
 
     const getTimeEntries = async () => {
       const { data } = await api.post('/toggl/days', body )

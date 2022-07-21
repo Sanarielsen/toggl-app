@@ -23,7 +23,7 @@ function Workspaces() {
 
     return (
       <div className="App bg-cyan-200">
-        <div className="grid place-content-center h-screen w-screen">
+        <div className="grid place-content-center h-screen w-screen overflow-y-scroll">
             
             <fieldset>
 

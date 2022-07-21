@@ -1,4 +1,29 @@
-html, body, #root, .listOccurrancy  {
+html, body, #root, .Projects  {
 
     height: 100vh;
+ }
+
+ .projectsContext {
+
+    height: 30vh;
+ }
+
+  /* width */
+  ::-webkit-scrollbar {
+   width: 10px;
+ }
+ 
+ /* Track */
+::-webkit-scrollbar-track {
+   background: #67e8f9;
+ }
+  
+ /* Handle */
+::-webkit-scrollbar-thumb {
+   background: #0891b2; 
+ }
+ 
+ /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #164e63; 
  }
