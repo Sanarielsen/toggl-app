@@ -4,7 +4,7 @@ import api from '../../api/api'
 import { useState } from 'react'
 
 function Token() {
-  const [token, setToken]= useState<string>()
+  const [token, setToken]= useState<string | null>(localStorage.getItem('token'))
   const navigate = useNavigate()
 
   const handleSubmit = async (e: any ,token?: string) => {
@@ -13,6 +13,7 @@ function Token() {
     return
 
     // Can save Token to LocalStorage
+    localStorage.setItem('token', token)
     const response = await api.post(`account/token/${token}`)
     if (response.status != 201)
       return
