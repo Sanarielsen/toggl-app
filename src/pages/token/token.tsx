@@ -12,13 +12,12 @@ function Token() {
     if (!token)
     return
 
-    // Can save Token to LocalStorage
     localStorage.setItem('token', token)
     const response = await api.post(`account/token/${token}`)
     if (response.status != 201)
       return
 
-    navigate("/search")
+    navigate("/workspaces")
   }
 
   return (

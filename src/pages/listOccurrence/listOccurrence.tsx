@@ -1,7 +1,8 @@
 import {GroupDate} from "../../components/groupDate/groupDate"
 import './index.css'
-import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { MouseEvent, useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import api from "../../api/api"
 
 export type IDate = {
   label: string;
@@ -17,6 +18,22 @@ function ListOccurrence() {
   const addNewOccurrence = () => {
     const newIDate = { begin: new Date(), end: new Date()} as any as IDate
     setTimeEntries(timeEntries.concat(newIDate))
+  }
+
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e: MouseEvent) => {
+    e.preventDefault()
+    const body = {
+      wid: localStorage.getItem("wid"),
+      projectId: localStorage.getItem("projectId"),
+      timeEntries: timeEntries
+    }
+    const response = await api.post("toggl/time-entries", body)
+    if (response.status != 201)
+      return
+
+    navigate("/result")
   }
 
   useEffect(() => {
@@ -41,7 +58,8 @@ function ListOccurrence() {
               )}
           </div>
 
-          <button className="p-2 w-full rounded text-zinc-50 bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300">
+          <button onClick={(evt) => handleSubmit(evt)}
+          className="p-2 w-full rounded text-zinc-50 bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300">
               Continue
           </button>
         </div>

@@ -13,12 +13,12 @@ import {
 } from "react-router-dom";
 
 function App() {
-
+  const token = localStorage.getItem("token")
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Token />} />
+          <Route index element={token ? <Workspaces /> : <Token />} />
           <Route path="search" element={<Search />} />
           <Route path="occurrences" element={<ListOccurrence />} />
           <Route path="projects" element={<Projects />} />

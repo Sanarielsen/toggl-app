@@ -4,42 +4,41 @@ import api from "../../api/api"
 import './index.css'
 
 export type IWorkspace = {
-
+  id: string,
   name: string
 }
 
 function Workspaces() {
+    const [workspaces, setWorkspaces] = useState<IWorkspace[]>([])
 
-    const [paramsEntries, setParamsEntries] = useState<IWorkspace[]>([])
-
-    const getParamsEntries = async () => {
+    const getWorkspaces = async () => {
       const { data } = await api.get('toggl/workspaces')
-      setParamsEntries(data)
+      setWorkspaces(data)
     }
 
     useEffect(() => {
-      getParamsEntries()
+      getWorkspaces()
     }, [])
 
     return (
       <div className="App bg-cyan-200">
         <div className="grid place-content-center h-screen w-screen overflow-y-scroll">
-            
+
             <fieldset>
 
               <legend className="font-bold"> Select your workspace: </legend>
-              {paramsEntries.map(entryData => {
+              {workspaces.map(entryData => {
 
                   return (
 
-                    <SingleWorkspace name={entryData.name}/>
+                    <SingleWorkspace key={entryData.id} name={entryData.name} id={entryData.id}/>
                   )
               })}
-              
+
             </fieldset>
         </div>
       </div>
     )
   }
-  
+
 export default Workspaces
