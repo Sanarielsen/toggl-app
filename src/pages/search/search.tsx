@@ -29,7 +29,8 @@ function Search() {
       <div className="ResultOperation bg-cyan-100">
         <div className="grid place-content-center h-screen w-screen">
 
-          <label className="text-sm font-medium text-slate-700"> Search occurrences: </label>
+          <label className="text-medium font-medium text-slate-700"> Set occurrences: </label>
+          <label className="text-sm font-medium text-slate-700 text-red-500">* Consider only 8 hours (w/o Lunch Time) ex: 09:00 - 17:00</label>
 
           <div className="grid xl:grid-cols-2 sm:grid-cols-1 gap-5 my-5">
             <label className="block">
