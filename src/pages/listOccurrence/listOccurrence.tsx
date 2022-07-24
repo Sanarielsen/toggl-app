@@ -11,19 +11,19 @@ export type IDate = {
 
 function ListOccurrence() {
   const [timeEntries, setTimeEntries] = useState<IDate[]>([])
-  let index = 0
   const {state}: any = useLocation()
+  let index = 0
+
+  const addNewOccurrence = () => {
+    const newIDate = { begin: new Date(), end: new Date()} as any as IDate
+    setTimeEntries(timeEntries.concat(newIDate))
+  }
 
   useEffect(() => {
       if (state) {
         setTimeEntries(state)
       }
     }, [])
-
-  const addNewOccurrence = () => {
-    const newIDate = { begin: new Date(), end: new Date()} as any as IDate
-    setTimeEntries(timeEntries.concat(newIDate))
-  }
 
   return (
     <div className="listOccurrence bg-cyan-100">
