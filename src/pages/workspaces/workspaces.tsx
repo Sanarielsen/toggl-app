@@ -12,7 +12,14 @@ function Workspaces() {
     const [workspaces, setWorkspaces] = useState<IWorkspace[]>([])
 
     const getWorkspaces = async () => {
-      const { data } = await api.get('toggl/workspaces')
+      const token = localStorage.getItem("token")
+      if (!token)
+        return
+      const tokenResponse = await api.post(`account/token/${token}`)
+      if (tokenResponse.status != 201)
+        return
+
+      const {data} = await api.get('toggl/workspaces')
       setWorkspaces(data)
     }
 

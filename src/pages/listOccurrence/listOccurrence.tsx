@@ -24,9 +24,14 @@ function ListOccurrence() {
 
   const handleSubmit = async (e: MouseEvent) => {
     e.preventDefault()
+    const wid = localStorage.getItem("wid")
+    const projectId = localStorage.getItem("projectId")
+
+    if (!wid || !projectId) return
+
     const body = {
-      wid: localStorage.getItem("wid"),
-      projectId: localStorage.getItem("projectId"),
+      wid: parseInt(wid),
+      projectId: parseInt(projectId),
       timeEntries: timeEntries
     }
     const response = await api.post("toggl/time-entries", body)
