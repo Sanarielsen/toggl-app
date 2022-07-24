@@ -7,7 +7,7 @@ function Token() {
   const [token, setToken]= useState<string | null>(localStorage.getItem('token'))
   const navigate = useNavigate()
 
-  const handleSubmit = async (e: any ,token?: string) => {
+  const handleSubmit = async (e: any ,token?: string | null) => {
     e.preventDefault()
     if (!token)
     return
