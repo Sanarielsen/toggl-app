@@ -12,12 +12,16 @@ function Token() {
     if (!token)
     return
 
-    localStorage.setItem('token', token)
-    const response = await api.post(`account/token/${token}`)
-    if (response.status != 201)
+    try {
+      const response = await api.post(`account/token/${token}`)
+      if (response.status != 201)
       return
 
-    navigate("/workspaces")
+      localStorage.setItem('token', token)
+      navigate("/workspaces")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -29,7 +33,7 @@ function Token() {
                 <input onChange={({target}) => setToken(target.value)} type="text" name="txtAPIToken" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" />
               </span>
               <button onClick={(evt) => handleSubmit(evt, token)} className="p-2 w-full rounded text-zinc-50 bg-cyan-500 hover:bg-cyan-600 active:bg-cyan-700 focus:outline-none focus:ring focus:ring-cyan-300">
-                  Connection
+                  Set Token
               </button>
             </form>
           </div>
